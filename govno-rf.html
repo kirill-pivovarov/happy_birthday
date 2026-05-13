@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ГОВНО РФ — Официальный портал</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --hot-pink: #ff007f; /* Тот самый яркий розовый */
+            --soft-pink: #fce4ec; /* Мягкий розовый */
+            --deep-blue: #0d47a1;
+            --gold: #d4af37;
+            --glass: rgba(255, 255, 255, 0.8);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, var(--soft-pink) 0%, #ffffff 100%);
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+
+        /* --- Анимированный фон --- */
+        .bg-blob {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: var(--hot-pink);
+            filter: blur(150px);
+            opacity: 0.1;
+            z-index: -1;
+            border-radius: 50%;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(100%, 80%); }
+        }
+
+        /* --- Навигация --- */
+        header {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--hot-pink);
+        }
+
+        .logo { display: flex; align-items: center; gap: 15px; }
+        .logo-shield {
+            width: 50px;
+            height: 50px;
+            background: var(--deep-blue);
+            border: 3px solid var(--gold);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--gold);
+            font-weight: 900;
+            font-size: 28px;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--deep-blue);
+            margin-left: 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+        nav a:hover { color: var(--hot-pink); }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 10% 50px;
+            gap: 50px;
+        }
+
+        .hero-text h1 {
+            font-size: 5rem;
+            line-height: 0.9;
+            margin: 0;
+            background: linear-gradient(to right, var(--deep-blue), var(--hot-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 30px;
+            border: 10px solid white;
+            box-shadow: 0 20px 50px rgba(255, 0, 127, 0.3);
+            transform: rotate(3deg);
+            transition: 0.5s;
+        }
+        .hero-image img:hover { transform: rotate(0deg) scale(1.02); }
+
+        /* --- Секции --- */
+        section { padding: 100px 10%; }
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            color: var(--deep-blue);
+            margin-bottom: 60px;
+        }
+
+        /* Карточки программы */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.4s;
+            border: 1px solid var(--soft-pink);
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover { transform: translateY(-10px); border-color: var(--hot-pink); }
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--hot-pink);
+        }
+
+        /* Спонсоры */
+        .sponsor-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        .sponsor-item { text-align: center; }
+        .sponsor-item img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            transition: 0.5s;
+        }
+        .sponsor-item:hover img { filter: none; transform: scale(1.03); }
+
+        /* Футер и Кнопки */
+        .cta-btn {
+            background: var(--hot-pink);
+            color: white;
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            display: inline-block;
+            box-shadow: 0 10px 25px rgba(255, 0, 127, 0.4);
+            transition: 0.3s;
+        }
+        .cta-btn:hover { background: var(--deep-blue); transform: scale(1.1); }
+
+        footer {
+            background: var(--deep-blue);
+            color: white;
+            padding: 60px 10%;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="bg-blob"></div>
+
+<header>
+    <div class="logo">
+    <!-- Логотип-картинка -->
+    <img src="photo-logo.png" alt="ГОВНО РФ Лого" style="height: 60px; width: auto; object-fit: contain;">
+    
+    <!-- Скрытый текст для SEO и порядка (опционально) -->
+    <div class="logo-text" style="margin-left: 10px;">
+        <span style="font-size: 10px; color: var(--deep-blue); font-weight: 900; text-transform: uppercase; display: block;">
+            Либо ты с нами, либо нет, но лучше бы да
+        </span>
+    </div>
+</div>
+    <nav>
+        <a href="#prog">Программа</a>
+        <a href="#leader">Лидер</a>
+        <a href="#money">Спонсоры</a>
+        <a href="#base">Штаб</a>
+        <a href="#strapon-form">отСТРАПОНить</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-text" data-aos="fade-right">
+        <h1>БУДУЩЕЕ ПАХНЕТ ПЕРЕМЕНАМИ - ВСТУПАЙ В ГОВНО</h1>
+        <p style="font-size: 1.5rem; margin: 30px 0;">ГОВНО РФ: Государственный Отдел Воспитательного Надзора и Обеспечения Радикального Феминизма</p>
+        <a href="#join" class="cta-btn">ВСТУПИТЬ В ПАРТИЮ</a>
+    </div>
+    <div class="hero-image" data-aos="fade-left">
+        <img src="photo1.png" alt="Лидер София" style="width: 180%;">
+    </div>
+</section>
+
+
+<section id="prog" style="background: linear-gradient(180deg, var(--soft-pink) 0%, #ffffff 100%);">
+    <h2 class="section-title" data-aos="zoom-in">КУРС НА СВЕТЛОЕ БУДУЩЕЕ</h2>
+    
+    <p data-aos="fade-up" style="
+        text-align: center; 
+        max-width: 800px; 
+        margin: -30px auto 50px; /* Отрицательный отступ сверху, чтобы быть ближе к заголовку */
+        font-size: 1.2rem; 
+        line-height: 1.6; 
+        color: #555; /* Серый цвет, чтобы отличаться от темно-синего заголовка */
+        font-style: italic; /* Курсив для пущей важности */
+    ">
+        Мы не просто очередная политическая партия, создающая только вид деятельности, мы предлагаем совершенно иной курс развития нашей страны, который в итоге приведет к светлому будущему. Вот несколько наших тезисов:
+    </p>
+
+    <div style="display: flex; flex-direction: column; gap: 50px; align-items: center;">
+        
+        <!-- Верхний ряд карточек -->
+        <div class="grid" style="width: 100%;">
+            <div class="card" data-aos="fade-right">
+                <h3 style="color: var(--hot-pink);">Ликвидация социально-опасных элементов</h3>
+                <p>Главной угрозой современного общества мы видим свободно гуляющих по улицам города мужчин. С этим необходимо бороться, поэтому наша партия представляет организацию <b>Системы Транспортировки и Распределения Агрессивных Представителей Общественного Неповиновения (сокращенно - СТРАПОН).</b> </p>
+            </div>
+            <div class="card" data-aos="fade-left" data-aos-delay="100">
+                <h3 style="color: var(--hot-pink);">Сделаем народное достояние по настоящему народным</h3>
+                <p>Национализация всех модов Sims 4 и раздача членам партии абсолютно бесплатно.</p>
+            </div>
+        </div>
+
+        <!-- Центральный агитплакат с эффектом "вылета" -->
+        <div style="position: relative; width: 100%; max-width: 900px; text-align: center;" data-aos="zoom-out-up">
+            <div style="position: absolute; top: -20px; left: -20px; right: -20px; bottom: -20px; background: var(--hot-pink); opacity: 0.1; border-radius: 50px; filter: blur(30px); z-index: -1;"></div>
+            <img src="photo2.png" alt="Агитплакат" style="width: 50%; border-radius: 40px; border: 5px solid white; box-shadow: 0 30px 60px rgba(255, 0, 127, 0.2);">
+            
+            <!-- Декоративная плашка поверх плаката -->
+            
+        </div>
+
+        <!-- Нижний ряд / дополнительные пункты -->
+        <div class="grid" style="width: 100%; justify-content: center;">
+            <div class="card" data-aos="fade-up" data-aos-delay="200" style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <h3 style="color: var(--hot-pink);">Борьба за традиционные ценности</h3>
+                <p>Внесение предложения в генеральную ассамблею ООН о разрешении применения химического оружия для борьбы с фурри-фандомами.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="300" style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <h3 style="color: var(--hot-pink);">Всеобщий подъем</h3>
+                <p>Официальный запрос верховному конституционному суду Российской Федерации возбудить каждого гражданина нашей страны.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="leader" style="background: linear-gradient(180deg, #ffffff 0%, var(--soft-pink) 100%);">
+    <h2 class="section-title" data-aos="fade-down">ЛИЧНОСТЬ В ИСТОРИИ: СОФИЯ</h2>
+    
+    <div style="display: flex; align-items: center; gap: 50px; background: white; padding: 50px; border-radius: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); border: 2px solid var(--hot-pink);" data-aos="zoom-in">
+        
+        <div style="flex: 1;">
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--deep-blue);">
+                Партия ГОВНО РФ неотделима от её политического лидера. София — это не просто имя, это символ непоколебимой воли и любви к порядку. Вот лишь несколько фактов, подтверждающих её право на абсолютную власть:
+            </p>
+            
+            <ul style="list-style: none; padding: 0; margin-top: 30px;">
+                <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px;">
+                    <span style="color: var(--hot-pink); font-size: 1.5rem;">📜</span>
+                    <span><strong>Строгие принципы:</strong> Как и ее политический кумир, София очень любит животных и неоднократно заявляла, что категорически против охоты, только если это не "Охота Крепкое".</span>
+                </li>
+                <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px;">
+                    <span style="color: var(--hot-pink); font-size: 1.5rem;">🕊</span>
+                    <span><strong>Миротворчество:</strong> "Хочешь изменить мир - начни с себя". Поэтому вот уже год, как София перестала поддерживать тяжелым вооружением военные конфликты в странах третьего мира. </span>
+                </li>
+                <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px;">
+                    <span style="color: var(--hot-pink); font-size: 1.5rem;">⚖️</span>
+                    <span><strong>Приверженость правопорядку:</strong> Буквально на днях софия предотвратила кражу на кассе самообслуживания. Спросите - как? Самоконтроль!</span>
+                </li>
+                <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px;">
+                    <span style="color: var(--hot-pink); font-size: 1.5rem;">🛡</span>
+                    <span><strong>Неуязвимость:</strong> Несмотря на малый срок политической карьеры, Софию уже пытались отравить <b>новичком</b>. Однако агент был полным дилетантом, поэтому из всего плана выполнил только пункт с кражей трусов, забыв нанести на них яд.</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div style="flex: 0.8; text-align: center;">
+            <!-- Здесь можно продублировать фото или вставить агит-графику -->
+            <div style="padding: 20px; border: 1px dashed var(--hot-pink); border-radius: 20px;">
+                <h3 style="color: var(--hot-pink); text-transform: uppercase; letter-spacing: 2px;">Досье №001</h3>
+                <p style="font-size: 0.9rem; opacity: 0.7;">Статус: ВЕЛИКИЙ ЛИДЕР</p>
+                <img src="photo7.png" style="width: 100%; border-radius: 15px; margin-top: 15px; filter: contrast(1.1);">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="money">
+    <h2 class="section-title">НАШИ МЕЦЕНАТЫ</h2>
+    <div class="sponsor-grid">
+        <div class="sponsor-item" data-aos="fade-up">
+            <img src="photo3.jpg" alt="Эпштейн">
+            <h3 style="color: var(--hot-pink); margin-bottom: 5px;">Джеффри Эпштейн</h3>
+            <p style="font-weight: bold;">Это близкий знакомый Софии, она какое-то время работала у него на острове и все еще сохраняет с миллиардером теплые отношения.<br>С Джефри удалось договориться о щедром финансировании взамен на еженедельную поставку сырной пиццы (кодовое название CP).</p>
+        </div>
+        <div class="sponsor-item" data-aos="fade-up" data-aos-delay="100">
+            <img src="photo4.png" alt="Вайнштейн">
+            <h3 style="color: var(--hot-pink); margin-bottom: 5px;">Харви Вайнштейн</h3>
+            <p style=" font-weight: bold;">Известный продюсер согласился снимать девушек, состоящих в партии, в своих фильмах абсолютно бесплатно. Что делает хорошую рекламу нашей партии.</p>
+        </div>
+        <div class="sponsor-item" data-aos="fade-up" data-aos-delay="200">
+            <!-- Здесь Пивоваров, если файла нет, используй заглушку или проверь имя -->
+            <img src="photo5.jpg" alt="Пивоваров">
+            <h3 style="color: var(--hot-pink); margin-bottom: 5px;">Кирилл Пивоваров</h3>
+            <p style="font-weight: bold;">На заре партии обеспечил её членов мерчем. Партия ГОВНО РФ официально выражает огромную благодарность за серую толстовку.</p>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="base" style="background: white; border-radius: 100px 100px 0 0;">
+    <h2 class="section-title">ЦЕНТРАЛЬНЫЙ ШТАБ</h2>
+    <p data-aos="fade-up" style="
+        text-align: center; 
+        max-width: 800px; 
+        margin: -30px auto 50px; /* Отрицательный отступ сверху, чтобы быть ближе к заголовку */
+        font-size: 1.2rem; 
+        line-height: 1.6; 
+        color: #555; /* Серый цвет, чтобы отличаться от темно-синего заголовка */
+        font-style: italic; /* Курсив для пущей важности */
+    ">Дабы не упасть в грязь лицом перед членами партии и избирателями, в качестве штаб-квартиры был выкуплен элитный дом в Геленджике с удобным расположением и красивым видом.</p>
+    <div style="text-align: center;">
+        <img src="photo6.png" alt="Дворец" style="width: 100%; border-radius: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.1);">
+        <p style="margin-top: 30px; font-size: 1.2rem; font-weight: bold; color: var(--deep-blue);">Резиденция в Геленджике: Всё ГОВНО РФ собрано здесь.</p>
+    </div>
+</section>
+
+<section id="join" style="text-align: center; background: var(--hot-pink); color: white;">
+    <h2 style="font-size: 4rem; margin-bottom: 20px;">ВСТУПАЙ В ГОВНО</h2>
+    <p style="font-size: 1.5rem; opacity: 0.9;">Либо ты с нами, либо ты в трудовом лагере.</p>
+    <div style="margin-top: 50px;">
+        <a href="https://www.change.org/p/%D0%BE%D1%82%D0%BC%D0%B5%D0%BD%D0%B0-%D0%BF%D0%BE%D0%BD%D1%8F%D1%82%D0%B8%D1%8F-%D1%81%D0%B5%D0%BA%D1%81?source_location=topics_page" class="cta-btn" style="background: var(--deep-blue); font-size: 2rem;">ПРИСЯГНУТЬ СОФИИ</a>
+    </div>
+</section>
+
+<section id="strapon-form" style="background: white; padding: 100px 10%;">
+    <div style="
+        background: var(--soft-pink); 
+        padding: 60px; 
+        border-radius: 40px; 
+        border: 4px dashed var(--hot-pink); 
+        max-width: 900px; 
+        margin: 0 auto; 
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    " data-aos="zoom-in">
+        
+        <!-- Декоративный элемент фона -->
+        <div style="position: absolute; top: -20px; right: -20px; font-size: 150px; opacity: 0.05; transform: rotate(15deg); pointer-events: none;">⛓️</div>
+
+        <h2 style="color: var(--hot-pink); font-size: 3.5rem; margin-bottom: 10px; font-weight: 900;">ОТСТРАПОНИТЬ</h2>
+        <p style="font-size: 1.2rem; color: var(--deep-blue); font-weight: 700; margin-bottom: 40px;">
+            Заметили подозрительную мужскую активность? Заполните форму, и наша служба депортации обеспечит субъекту бесплатный билет в трудовой лагерь.
+        </p>
+
+        <form id="punishmentForm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left;">
+            <div style="grid-column: span 2;">
+                <label style="display: block; margin-bottom: 8px; font-weight: bold; color: var(--deep-blue);">ФИО Нарушителя</label>
+                <input type="text" placeholder="Иванов Иван Иванович" required style="width: 100%; padding: 15px; border: 2px solid white; border-radius: 10px; font-family: inherit;">
+            </div>
+            <div style="grid-column: span 2;">
+                <label style="display: block; margin-bottom: 8px; font-weight: bold; color: var(--deep-blue);">Последний известный адрес проживания</label>
+                <input type="text" placeholder="г. Москва, ул. Смирения, д. 69" required style="width: 100%; padding: 15px; border: 2px solid white; border-radius: 10px; font-family: inherit;">
+            </div>
+            
+            <div style="grid-column: span 2; margin-top: 20px;">
+                <button type="submit" class="cta-btn" style="width: 100%; border: none; cursor: pointer; font-size: 1.5rem;">ОТПРАВИТЬ НА ПЕРЕВОСПИТАНИЕ</button>
+            </div>
+        </form>
+
+        <!-- Сообщение об успехе (скрыто по умолчанию) -->
+        <div id="successMessage" style="display: none; margin-top: 30px; padding: 20px; background: #4caf50; color: white; border-radius: 15px; font-weight: bold; animation: bounceIn 0.5s;">
+            ✅ ЗАЯВКА ПРИНЯТА! Оперативная группа С.Т.Р.А.П.О.Н. уже выехала по указанному адресу. Спасибо за бдительность!
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes bounceIn {
+        0% { transform: scale(0.3); opacity: 0; }
+        50% { transform: scale(1.05); opacity: 1; }
+        70% { transform: scale(0.9); }
+        100% { transform: scale(1); }
+    }
+</style>
+
+<script>
+    document.getElementById('punishmentForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Чтобы страница не перезагружалась
+        
+        // Скрываем форму
+        this.style.display = 'none';
+        
+        // Показываем сообщение об успехе
+        const successBox = document.getElementById('successMessage');
+        successBox.style.display = 'block';
+        
+        // Опционально: прокрутка к сообщению
+        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+</script>
+
+<footer>
+    <p style="font-weight: 700;">© 2026 Партия ГОВНО РФ. Лицензия Матриархата №001.</p>
+    <p style="opacity: 0.5; margin-top: 20px;">Сайт создан в воспитательных целях. Попытка выхода карается СТРАПОНом.</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1200 });
+</script>
+
+</body>
+</html>
