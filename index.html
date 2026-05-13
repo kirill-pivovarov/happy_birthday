@@ -224,6 +224,60 @@
             opacity: 1;
         }
 
+        /* Адаптивность для мобильных устройств */
+        @media (max-width: 768px) {
+            /* Главный экран (Hero) */
+            .hero {
+                flex-direction: column; /* Текст и фото встают друг под друга */
+                text-align: center;
+                padding: 100px 5% 50px;
+            }
+        
+            .hero-text h1 {
+                font-size: 2.5rem; /* Уменьшаем шрифт заголовка */
+            }
+        
+            .hero-image {
+                order: -1; /* Фото лидера будет ПЕРЕД текстом на мобиле */
+                margin-bottom: 30px;
+            }
+        
+            .hero-image img {
+                width: 100%;
+                max-width: 300px; /* Чтобы фото не было гигантским */
+            }
+        
+            /* Сетка программы и спонсоров */
+            .grid, .sponsor-grid {
+                grid-template-columns: 1fr !important; /* Всегда одна колонка */
+                gap: 20px;
+            }
+        
+            .sponsor-item img {
+                height: 350px; /* Фиксируем высоту фото спонсоров */
+            }
+        
+            /* Секция "отСТРАПОНить" */
+            #punishmentForm {
+                grid-template-columns: 1fr !important; /* Поля ввода в одну колонку */
+            }
+        
+            /* Секция Лидера */
+            #leader > div {
+                flex-direction: column !important; /* Текст и досье друг под другом */
+                padding: 30px 20px !important;
+            }
+        
+            /* Навигация (упрощаем для мобилы) */
+            nav {
+                display: none; /* Скрываем меню, чтобы не загромождать (или можно оставить 1-2 важные ссылки) */
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
         footer {
             background: var(--deep-blue);
             color: white;
